@@ -1,0 +1,15 @@
+version: "3.8"
+services: 
+  chat_api:  
+    image: chat_api
+    restart: always
+    build:
+     dockerfile: Dockerfile
+     context: .
+    ports:
+      - 3000:3000
+    networks:
+     - websmart 
+
+networks:
+  websmart:       

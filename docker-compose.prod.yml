@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  nginx:
+   image: nginx:stable-alpine
+   volumes:
+    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+   ports:
+   - 80:80
+   networks:
+    - websmart
+
+  chat_api:
+    image: srdjankljajo/chat_api
+    deploy:
+     replicas: 2
+     restart_policy:
+      condition: any
+     update_config:
+      parallelism: 2
+      delay: 15s 
+    build:
+     context: .
+    ports:
+      - 3000:80 
+      - websmart
+
+networks:
+  websmart:
