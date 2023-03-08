@@ -22,7 +22,8 @@ services:
      context: .
     ports:
       - 3000:80 
+    networks:
       - websmart
 
 networks:
-  websmart:
+  websmart:       
