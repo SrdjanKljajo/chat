@@ -18,7 +18,7 @@ const io = socketio(server)
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-const botName = 'Sigurica čat'
+const botName = 'Admin'
 
 // Run when client connects
 io.on('connection', socket => {
@@ -29,14 +29,14 @@ io.on('connection', socket => {
     socket.join(user.room)
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Pozdrav brat')) /
-      // Broadcast when a user connects
-      socket.broadcast
-        .to(user.room)
-        .emit(
-          'message',
-          formatMessage(botName, `${user.username} je sad ušao na čat`)
-        )
+    //socket.emit('message', formatMessage(botName, 'Pozdrav od admina!'))
+    // Broadcast when a user connects
+    socket.broadcast
+      .to(user.room)
+      .emit(
+        'message',
+        formatMessage(botName, `${user.username} je ušao na čat`)
+      )
 
     // Send users and room info
     io.to(user.room).emit('roomUsers', {

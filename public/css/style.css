@@ -31,7 +31,7 @@ a {
 
 .btn {
 	cursor: pointer;
-	padding: 5px 15px;
+	padding: 4px 12px;
 	background: var(--light-color);
 	color: var(--dark-color-a);
 	border: 0;
@@ -112,7 +112,7 @@ a {
 }
 
 .chat-form-container {
-	padding: 20px 30px;
+	padding: 10px 15px;
 	background-color: var(--dark-color-a);
 }
 
