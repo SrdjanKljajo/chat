@@ -19,7 +19,6 @@ const io = socketio(server)
 app.use(express.static(path.join(__dirname, 'public')))
 
 const botName = 'Admin'
-
 // Run when client connects
 io.on('connection', socket => {
   console.log(io.of('/').adapter)
@@ -29,7 +28,7 @@ io.on('connection', socket => {
     socket.join(user.room)
 
     // Welcome current user
-    //socket.emit('message', formatMessage(botName, 'Pozdrav od admina!'))
+    socket.emit('message', formatMessage(botName, 'Pozdrav momci!'))
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
